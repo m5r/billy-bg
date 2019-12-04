@@ -20,10 +20,10 @@ export default {
 
 			logger.log("replied to %s", inReplyToStatusId);
 		} catch (error) {
-			logger.error("error while tweeting", error)
+			logger.error("error while tweeting", error);
 		}
 	},
 	watchUserTweets(userId: string): Twit.Stream {
 		return t.stream("statuses/filter", { follow: userId });
-	}
+	},
 };
