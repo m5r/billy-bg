@@ -4,16 +4,17 @@
   "description": "",
   "scripts": {
     "start": "node ./build/index.js",
-    "build": "rm -rf ./build/* && tsc"
+    "build": "tsc",
+    "clean": "rm -rf ./build/*"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "8.2.0",
-    "twit": "2.2.11",
-    "typescript": "3.7.3"
+    "twit": "2.2.11"
   },
   "devDependencies": {
-    "@types/twit": "2.2.23"
+    "@types/twit": "2.2.23",
+    "typescript": "3.7.3"
   }
 }
