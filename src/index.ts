@@ -11,14 +11,15 @@ import { buildTweet } from "./tweet-builder";
 const SELF_TWITTER_ID = "1201734235620429824";
 const NARAKU_TWITTER_ID = "1117199467759976450";
 
-const stream = bot.watchUserTweets(NARAKU_TWITTER_ID);
-logger.log("waiting for new tweets from ", NARAKU_TWITTER_ID);
+const watchedUser = process.env.TWITTER_USER_ID ?? NARAKU_TWITTER_ID;
+const stream = bot.watchUserTweets(watchedUser);
+logger.log("waiting for new tweets from %s", watchedUser);
 
 stream.on("tweet", (tweet: Twit.Twitter.Status) => {
 	logger.log("new tweet %s from %s", tweet.id_str, tweet.user.id_str);
 
 	const isStandaloneStatus = tweet.in_reply_to_status_id === null;
-	const isStatusFromNaraku = tweet.user.id_str === NARAKU_TWITTER_ID;
+	const isStatusFromNaraku = tweet.user.id_str === watchedUser;
 	const isNotRetweet = !tweet.hasOwnProperty("retweeted_status");
 	const shouldReplyToStatus = isStandaloneStatus && isStatusFromNaraku && isNotRetweet;
 	if (shouldReplyToStatus) {
