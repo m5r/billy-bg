@@ -2,17 +2,18 @@
   "name": "billy-bg",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./build/index.js",
+    "build": "rm -rf ./build/* && tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "twit": "^2.2.11"
+    "dotenv": "8.2.0",
+    "twit": "2.2.11",
+    "typescript": "3.7.3"
   },
   "devDependencies": {
-    "@types/twit": "^2.2.23"
+    "@types/twit": "2.2.23"
   }
 }

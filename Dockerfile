@@ -1,7 +1,7 @@
 FROM node:13-alpine
 
 WORKDIR /app
-COPY package*.json .env index.js ./
-RUN npm i
+COPY package*.json .env src ./
+RUN npm i && npm run build
 
-CMD [ "node", "index.js" ]
+CMD [ "node", "build/index.js" ]
